@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.rickandmorty.R
-import com.example.rickandmorty.datalayer.RickAndMortyModel
+import com.example.rickandmorty.datalayer.RickAndMortyList
 
 
 @Composable
@@ -41,7 +41,7 @@ fun RickAndMortyApp(rickAndMortyViewModel: RickAndMortyViewModel, modifier: Modi
 
 
 @Composable
-fun RickAndMortyScreen(characters: List<RickAndMortyModel>) {
+fun RickAndMortyScreen(characters: List<RickAndMortyList>) {
     LazyColumn {
         items(characters) { myCharacters ->
             RickAndMortyCard(myCharacters = myCharacters)
@@ -51,7 +51,7 @@ fun RickAndMortyScreen(characters: List<RickAndMortyModel>) {
 
 
 @Composable
-fun RickAndMortyCard(myCharacters: RickAndMortyModel) {
+fun RickAndMortyCard(myCharacters: RickAndMortyList) {
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -70,7 +70,7 @@ fun RickAndMortyCard(myCharacters: RickAndMortyModel) {
                 Text(modifier = Modifier.padding(7.dp), text = "Status: ${myCharacters.status}")
                 Text(modifier = Modifier.padding(7.dp), text = "Species: ${myCharacters.species}")
                 Text(modifier = Modifier.padding(7.dp), text = "Gender: ${myCharacters.gender}")
-                Text(modifier = Modifier.padding(7.dp), text = "Origin: ${myCharacters.origin.originName}")
+                //Text(modifier = Modifier.padding(7.dp), text = "Origin: ${myCharacters.origin}")
             }
             Column(
 
@@ -102,7 +102,7 @@ fun RickAndMortyScreenPreview() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        //RickAndMortyCard(myCharacters = RickAndMortyModel(1, "Rick", "Alive", "Human", "Male", Origin("Earth 1"), image = "${R.drawable.img}"))
+        //RickAndMortyCard(myCharacters = RickAndMortyList(1, "Rick", "Alive", "Human", "Unknown", "Male", image = "${R.drawable.img}"))
     }
 }
 

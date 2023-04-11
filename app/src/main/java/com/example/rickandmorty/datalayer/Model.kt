@@ -5,45 +5,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 
-@Serializable
-data class Info(
-    val count: Int,
-    val pages: Int,
-    val next: String?,
-    val prev: String?
-)
-
-
-@Serializable
+/*@Serializable
 data class RickAndMortyModel(
     val info: String,
-    val results: List<RickAndMortyModel>?,
-    val id: Int,
-    val name: String,
-    val status: String,
-    val species: String,
-    val gender: String,
-    val origin: Origin,
-    val image: String
-)
+    val results: List<RickAndMortyModel>,
+)*/
 
 
 @Serializable
-data class CharacterResponse(
-    val info: Info,
-    val results: List<RickAndMortyModel>
-)
-
-
-@Serializable
-data class Location(
-    val name: String,
-    val url: String
-)
-
-
-@Serializable
-data class Origin(
-    @SerialName(value = "name")
-    val originName: String
+@SerialName(value = "results")
+data class RickAndMortyList(
+    @SerialName(value = "id") val id: Int,
+    @SerialName(value = "name") val name: String,
+    @SerialName(value = "status") val status: String,
+    @SerialName(value = "species") val species: String,
+    @SerialName(value = "gender") val gender: String,
+    @SerialName(value = "origin") val origin: String,
+    @SerialName(value = "image") val image: String
 )
