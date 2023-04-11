@@ -9,13 +9,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.rickandmorty.RickAndMortyApplication
-import com.example.rickandmorty.datalayer.RickAndMortyModel
 import com.example.rickandmorty.datalayer.RickAndMortyRepository
 import com.example.rickandmorty.datalayer.RickAndMortyState
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 

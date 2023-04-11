@@ -4,21 +4,41 @@ import android.icu.text.IDNA
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
 @Serializable
-data class CharactersResponse(
-    @SerialName("info") val info: String,
-    @SerialName("results") val results: RickAndMortyModel
+data class Info(
+    val count: Int,
+    val pages: Int,
+    val next: String?,
+    val prev: String?
 )
+
 
 @Serializable
 data class RickAndMortyModel(
-    @SerialName("id") val id: Int,
-    @SerialName("name") val name: String,
-    @SerialName("status") val status: String,
-    @SerialName("species") val species: String,
-    @SerialName("gender") val gender: String,
-    @SerialName("origin") val origin: Origin,
-    @SerialName("image") val image: String
+    val info: String,
+    val results: List<RickAndMortyModel>?,
+    val id: Int,
+    val name: String,
+    val status: String,
+    val species: String,
+    val gender: String,
+    val origin: Origin,
+    val image: String
+)
+
+
+@Serializable
+data class CharacterResponse(
+    val info: Info,
+    val results: List<RickAndMortyModel>
+)
+
+
+@Serializable
+data class Location(
+    val name: String,
+    val url: String
 )
 
 

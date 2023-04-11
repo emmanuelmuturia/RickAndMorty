@@ -5,8 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.rickandmorty.R
-import com.example.rickandmorty.datalayer.Origin
 import com.example.rickandmorty.datalayer.RickAndMortyModel
 
 
@@ -105,7 +102,7 @@ fun RickAndMortyScreenPreview() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        RickAndMortyCard(myCharacters = RickAndMortyModel(1, "Rick", "Alive", "Human", "Male", Origin("Earth 1"), image = "${R.drawable.img}"))
+        //RickAndMortyCard(myCharacters = RickAndMortyModel(1, "Rick", "Alive", "Human", "Male", Origin("Earth 1"), image = "${R.drawable.img}"))
     }
 }
 

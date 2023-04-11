@@ -13,7 +13,7 @@ interface AppContainer {
 
 class DefaultAppContainer: AppContainer {
 
-    private val baseURL = "https://rickandmortyapi.com/"
+    private val baseURL = "https://rickandmortyapi.com/api/"
 
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit = Retrofit.Builder()
