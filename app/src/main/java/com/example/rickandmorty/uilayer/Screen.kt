@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.rickandmorty.R
-import com.example.rickandmorty.datalayer.RickAndMortyList
+import com.example.rickandmorty.datalayer.RickAndMortyDto
 
 
 @Composable
@@ -32,7 +32,7 @@ fun RickAndMortyApp(rickAndMortyViewModel: RickAndMortyViewModel, modifier: Modi
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it),
-            color = Color.Magenta
+            color = Color.Yellow
         ) {
             HomeScreen(rickAndMortyState = rickAndMortyViewModel.rickAndMortyState)
         }
@@ -41,7 +41,7 @@ fun RickAndMortyApp(rickAndMortyViewModel: RickAndMortyViewModel, modifier: Modi
 
 
 @Composable
-fun RickAndMortyScreen(characters: List<RickAndMortyList>) {
+fun RickAndMortyScreen(characters: List<RickAndMortyDto>) {
     LazyColumn {
         items(characters) { myCharacters ->
             RickAndMortyCard(myCharacters = myCharacters)
@@ -51,7 +51,7 @@ fun RickAndMortyScreen(characters: List<RickAndMortyList>) {
 
 
 @Composable
-fun RickAndMortyCard(myCharacters: RickAndMortyList) {
+fun RickAndMortyCard(myCharacters: RickAndMortyDto) {
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -59,39 +59,30 @@ fun RickAndMortyCard(myCharacters: RickAndMortyList) {
             .aspectRatio(1f),
         elevation = 7.dp,
     ) {
-        Row(
+        Column(
             modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.Center
         ) {
-            Column(
-
-            ) {
+            AsyncImage(
+                modifier = Modifier
+                    .padding(7.dp),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(myCharacters.image)
+                    .crossfade(true)
+                    .build(),
+                error = painterResource(id = R.drawable.ic_broken_image),
+                placeholder = painterResource(id = R.drawable.loading_img),
+                contentScale = ContentScale.Crop,
+                contentDescription = "Rick and Morty"
+            )
                 Text(modifier = Modifier.padding(7.dp), text = "Name: ${myCharacters.name}")
                 Text(modifier = Modifier.padding(7.dp), text = "Status: ${myCharacters.status}")
                 Text(modifier = Modifier.padding(7.dp), text = "Species: ${myCharacters.species}")
                 Text(modifier = Modifier.padding(7.dp), text = "Gender: ${myCharacters.gender}")
                 //Text(modifier = Modifier.padding(7.dp), text = "Origin: ${myCharacters.origin}")
             }
-            Column(
-
-            ) {
-                AsyncImage(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(7.dp),
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(myCharacters.image)
-                        .crossfade(true)
-                        .build(),
-                    error = painterResource(id = R.drawable.ic_broken_image),
-                    placeholder = painterResource(id = R.drawable.loading_img),
-                    contentScale = ContentScale.Crop,
-                    contentDescription = "Rick and Morty"
-                )
-            }
         }
     }
-}
 
 
 @Preview(showBackground = true)
@@ -102,7 +93,7 @@ fun RickAndMortyScreenPreview() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        //RickAndMortyCard(myCharacters = RickAndMortyList(1, "Rick", "Alive", "Human", "Unknown", "Male", image = "${R.drawable.img}"))
+        RickAndMortyCard(myCharacters = RickAndMortyDto(1, "Rick", "Alive", "Human", "Unknown", image = "${R.drawable.img}"))
     }
 }
 

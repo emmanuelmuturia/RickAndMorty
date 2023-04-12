@@ -15,10 +15,15 @@ class DefaultAppContainer: AppContainer {
 
     private val baseURL = "https://rickandmortyapi.com/api/"
 
+    private val json = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    }
+
     @OptIn(ExperimentalSerializationApi::class)
     private val retrofit = Retrofit.Builder()
         .baseUrl(baseURL)
-        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .build()
 
     private val retrofitService: RickAndMortyApiService by lazy {

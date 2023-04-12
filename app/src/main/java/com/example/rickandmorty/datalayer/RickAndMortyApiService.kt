@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface RickAndMortyApiService {
 
     @GET("character")
-    suspend fun getCharacter(): List<RickAndMortyList>
+    suspend fun getCharacter(): RickAndMortyResponse
 
 }
