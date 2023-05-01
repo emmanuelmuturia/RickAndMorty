@@ -1,26 +1,7 @@
 package com.example.rickandmorty.datalayer
 
-import android.icu.text.IDNA
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-
-/*@Serializable
-data class RickAndMortyList(
-    val id: Int,
-    val name: String,
-    val status: String,
-    val species: String,
-    val gender: String,
-    val origin: Origin,
-    val image: String
-)
-
-
-@Serializable
-data class Origin(
-    val name: String
-)*/
-
 
 @Serializable
 data class RickAndMortyResponse(
